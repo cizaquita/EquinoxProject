@@ -12,5 +12,7 @@ namespace Equinox.Domain.Commands
         public string Email { get; protected set; }
 
         public DateTime BirthDate { get; protected set; }
+
+        public DateTime RegisterDate { get; protected set; }
     }
 }

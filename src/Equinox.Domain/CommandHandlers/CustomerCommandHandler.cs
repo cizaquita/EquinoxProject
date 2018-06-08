@@ -36,7 +36,7 @@ namespace Equinox.Domain.CommandHandlers
                 return Task.CompletedTask;
             }
 
-            var customer = new Customer(Guid.NewGuid(), message.Name, message.Email, message.BirthDate);
+            var customer = new Customer(Guid.NewGuid(), message.Name, message.Email, message.BirthDate, message.RegisterDate);
 
             if (_customerRepository.GetByEmail(customer.Email) != null)
             {
@@ -48,7 +48,7 @@ namespace Equinox.Domain.CommandHandlers
 
             if (Commit())
             {
-                Bus.RaiseEvent(new CustomerRegisteredEvent(customer.Id, customer.Name, customer.Email, customer.BirthDate));
+                Bus.RaiseEvent(new CustomerRegisteredEvent(customer.Id, customer.Name, customer.Email, message.RegisterDate, message.RegisterDate));
             }
 
             return Task.CompletedTask;
@@ -62,7 +62,7 @@ namespace Equinox.Domain.CommandHandlers
                 return Task.CompletedTask;
             }
 
-            var customer = new Customer(message.Id, message.Name, message.Email, message.BirthDate);
+            var customer = new Customer(message.Id, message.Name, message.Email, message.BirthDate, message.RegisterDate);
             var existingCustomer = _customerRepository.GetByEmail(customer.Email);
 
             if (existingCustomer != null && existingCustomer.Id != customer.Id)
@@ -78,7 +78,7 @@ namespace Equinox.Domain.CommandHandlers
 
             if (Commit())
             {
-                Bus.RaiseEvent(new CustomerUpdatedEvent(customer.Id, customer.Name, customer.Email, customer.BirthDate));
+                Bus.RaiseEvent(new CustomerUpdatedEvent(customer.Id, customer.Name, customer.Email, customer.BirthDate, message.RegisterDate));
             }
 
             return Task.CompletedTask;

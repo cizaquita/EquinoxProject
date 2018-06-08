@@ -5,12 +5,13 @@ namespace Equinox.Domain.Commands
 {
     public class UpdateCustomerCommand : CustomerCommand
     {
-        public UpdateCustomerCommand(Guid id, string name, string email, DateTime birthDate)
+        public UpdateCustomerCommand(Guid id, string name, string email, DateTime birthDate, DateTime registerDate)
         {
             Id = id;
             Name = name;
             Email = email;
             BirthDate = birthDate;
+            RegisterDate = registerDate;
         }
 
         public override bool IsValid()

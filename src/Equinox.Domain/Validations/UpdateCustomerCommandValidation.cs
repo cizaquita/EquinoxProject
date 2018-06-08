@@ -10,6 +10,7 @@ namespace Equinox.Domain.Validations
             ValidateName();
             ValidateBirthDate();
             ValidateEmail();
+            ValidateRegisterDate();
         }
     }
 }

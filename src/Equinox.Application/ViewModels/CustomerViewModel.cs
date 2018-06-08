@@ -22,8 +22,14 @@ namespace Equinox.Application.ViewModels
 
         [Required(ErrorMessage = "The BirthDate is Required")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
-        [DataType(DataType.Date, ErrorMessage = "Data em formato inválido")]
+        [DataType(DataType.Date, ErrorMessage = "Invalid Date Format")]
         [DisplayName("Birth Date")]
         public DateTime BirthDate { get; set; }
+
+        [Required(ErrorMessage = "The RegisterDate is Required")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
+        [DataType(DataType.Date, ErrorMessage = "Invalid Date Format")]
+        [DisplayName("Register Date")]
+        public DateTime RegisterDate { get; set; }
     }
 }

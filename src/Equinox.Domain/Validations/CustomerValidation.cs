@@ -38,5 +38,18 @@ namespace Equinox.Domain.Validations
         {
             return birthDate <= DateTime.Now.AddYears(-18);
         }
+
+        protected void ValidateRegisterDate()
+        {
+            RuleFor(c => c.RegisterDate)
+                .NotEmpty()
+                .Must(NowDateTime)
+                .WithMessage("Register Date must not be blank!");
+        }
+
+        protected static bool NowDateTime(DateTime registerDate)
+        {
+            return registerDate == DateTime.Now;
+        }
     }
 }

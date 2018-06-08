@@ -16,7 +16,7 @@ namespace Equinox.UI.Site.Controllers
         [Route("about")]
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
+            ViewData["Message"] = "LOL WTF?!, Hola mundo TEST.";
 
             return View();
         }
